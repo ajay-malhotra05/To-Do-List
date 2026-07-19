@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  color: #333333;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Main Desktop App Container */
+.todo-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 35px 30px;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4a4a4a;
+  margin-bottom: 25px;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.input-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+  border-bottom-color: #666;
+}
+
+input[type="text"]::placeholder {
+  color: #b3b3b3;
+}
+
+.add-btn {
+  background-color: #4a4a4a;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #333;
+}
+
+/* Task List */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+/* Custom Checkbox Styling */
+.checkbox-container {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #fff;
+  border: 1px solid #a0a0a0;
+  border-radius: 3px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #7a7a7a;
+  border-color: #7a7a7a;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.task-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #4a4a4a;
+  word-break: break-all;
+}
+
+/* Completed state styling */
+.task-item.completed {
+  background-color: #fafafa;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #b3b3b3;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  padding: 0 4px;
+  font-family: Arial, sans-serif;
+}
+
+.delete-btn:hover {
+  color: #ff4d4d;
+}
+
+/* Footer Section */
+.counter {
+  font-style: italic;
+  font-weight: 700;
+  color: #7a7a7a;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.quote {
+  font-style: italic;
+  color: #b3b3b3;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* Condition-based Dynamic GIFs styling */
+.status-gif {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 10px;
+  align-self: center;
+  margin-bottom: 15px;
+  display: none; /* Controlled dynamically by JavaScript */
+}
+
+/* Progress Bar Layout UI */
+.progress-container {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7a7a7a;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #7a7a7a;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
