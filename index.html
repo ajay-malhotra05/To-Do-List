@@ -1,74 +1,111 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your To Do</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="style.css">
-  
+
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
+
 <body>
 
   <div class="todo-container">
+
     <h1>To Do list</h1>
+
+    <!-- Input Section -->
 
     <div class="input-section">
       <div class="input-wrapper">
         <input type="text" id="todo-input" placeholder="Add new task">
       </div>
+
       <button class="add-btn" id="add-btn">+</button>
     </div>
 
-    <ul class="task-list" id="task-list">
-      <li class="task-item">
-        <div class="task-left">
-          <label class="checkbox-container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          <span class="task-text">This is an example of task #1</span>
-        </div>
-        <button class="delete-btn">×</button>
-      </li>
-      
-      <li class="task-item">
-        <div class="task-left">
-          <label class="checkbox-container">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          <span class="task-text">This is an example of task #2</span>
-        </div>
-        <button class="delete-btn">×</button>
-      </li>
-    </ul>
+    <!-- Task List -->
 
-    <div class="counter" id="counter">Your remaining to do's : 2</div>
+    <ul class="task-list" id="task-list"></ul>
+
+    <div class="counter" id="counter">
+      Your remaining todos : 0
+    </div>
+
     <div class="quote">
       "Doing what you love is the cornerstone of having abundance in your life." - Wayne Dyer
     </div>
 
-    <img id="zero-gif" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDk3cnZ5Ym5ndjhvZXA2cjloN2pqdHQwdHduZGQwb2F4cHB5eTBieiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iEvGGvvkXde3glumQQ/giphy.gif" alt="Zero Completed GIF" class="status-gif">
-    <img id="twentyfive-gif" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWdpZHo3N2ZnaWVkM3lpMmtmdGVjN2g3MDFvdDFwaXFucmwya25tZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5Nle87WgNwDbsj3P4Y/giphy.gif" alt="25 Percent Completed GIF" class="status-gif">
-    <img id="fifty-gif" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnBjcHEzcngza2gzYmhxYXRhazN2aHR1ZHY2bXFlcDFrbWUwaDF1YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qcJxHU3DpEQCYm8YpT/giphy.gif" alt="50 Percent Completed GIF" class="status-gif">
-    <img id="seventyfive-gif" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnczZXRtd21mdWhzeXN3N3Q5YnR1eHJiNDVodnk1MHZnOWgzNjhodSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XCnJomRltoy2lk5KMW/giphy.gif" alt="75 Percent Completed GIF" class="status-gif">
-    <img id="hundred-gif" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHR0bmpxaHkzemFsbWEzbDlkeGc5c25tbHR4ZXhuZjAyYmJ0bjcybyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eIUpSyzwGp0YhAMTKr/giphy.gif" alt="100 Percent Completed GIF" class="status-gif">
+    <!-- Progress GIFs -->
+
+    <img id="zero-gif"
+      src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDk3cnZ5Ym5ndjhvZXA2cjloN2pqdHQwdHduZGQwb2F4cHB5eTBieiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iEvGGvvkXde3glumQQ/giphy.gif"
+      alt="Zero Completed GIF" class="status-gif">
+
+    <img id="twentyfive-gif"
+      src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWdpZHo3N2ZnaWVkM3lpMmtmdGVjN2g3MDFvdDFwaXFucmwya25tZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5Nle87WgNwDbsj3P4Y/giphy.gif"
+      alt="25 Percent Completed GIF" class="status-gif">
+
+    <img id="fifty-gif"
+      src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnBjcHEzcngza2gzYmhxYXRhazN2aHR1ZHY2bXFlcDFrbWUwaDF1YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qcJxHU3DpEQCYm8YpT/giphy.gif"
+      alt="50 Percent Completed GIF" class="status-gif">
+
+    <img id="seventyfive-gif"
+      src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnczZXRtd21mdWhzeXN3N3Q5YnR1eHJiNDVodnk1MHZnOWgzNjhodSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XCnJomRltoy2lk5KMW/giphy.gif"
+      alt="75 Percent Completed GIF" class="status-gif">
+
+    <img id="hundred-gif"
+      src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHR0bmpxaHkzemFsbWEzbDlkeGc5c25tbHR4ZXhuZjAyYmJ0bjcybyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eIUpSyzwGp0YhAMTKr/giphy.gif"
+      alt="100 Percent Completed GIF" class="status-gif">
+
+    <!-- Progress Bar -->
 
     <div class="progress-container">
       <div class="progress-labels">
         <span>Completion: <span id="percentage-label">0%</span></span>
       </div>
+
       <div class="progress-track">
         <div class="progress-fill" id="progress-fill"></div>
       </div>
     </div>
+
+  </div>
+
+  <!-- POMODORO TIMER -->
+
+  <div class="pomodoro-widget">
+
+    <button id="timer-toggle" class="timer-toggle">
+      ⏱ Timer
+    </button>
+
+    <div id="timer-panel" class="timer-panel">
+
+      <h3>Focus Timer</h3>
+
+      <div id="timer-display">25:00</div>
+
+      <div class="timer-controls">
+        <button id="timer-start">Start</button>
+        <button id="timer-pause">Pause</button>
+        <button id="timer-stop">Stop</button>
+      </div>
+
+      <p id="timer-status">Ready to focus?</p>
+
+    </div>
+
   </div>
 
   <script src="action.js"></script>
+
 </body>
 </html>
