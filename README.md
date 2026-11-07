@@ -69,11 +69,3 @@ Building this project helped me understand the basics of JavaScript and how it b
 This project was built as a beginner-friendly practice project to strengthen my HTML, CSS, and JavaScript skills by creating something interactive and fun.
 
 ---
-
-## ⭐ Final Challenge
-
-**Don't leave Homelander disappointed...**
-
-✅ Complete all your tasks and reach **100%** to unlock his happiest reaction!
-
-**Now go finish your to-do list and make Homelander proud.** 💙
